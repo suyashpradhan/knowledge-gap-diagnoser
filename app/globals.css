@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: theme("colors.canvas");
+  color: theme("colors.ink");
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle grid texture   the "diagnostic bench" surface, kept very quiet. */
+.bench-grid {
+  background-image:
+    linear-gradient(theme("colors.hairline") 1px, transparent 1px),
+    linear-gradient(90deg, theme("colors.hairline") 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+  opacity: 0.5;
+}
+
+:focus-visible {
+  outline: 2px solid theme("colors.ink");
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respect reduced-motion at the platform level too, not just in Framer. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
